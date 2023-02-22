@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Classes app</h1>
+  
+    <div class="form-wrapper">
+      <input type="text" placeholder="Title" #titleInput>
+      <input type="text" placeholder="Description" #descriptionInput>
+     
+      <button (click)="getClasses()">Get Classes</button>
+      <button (click)="addClasses()">Add Class</button>
+      <button (click)="toggleClassList()">{{ showClassList ? 'Hide' : 'Show' }} class list</button>
+    </div>
+  
+    <div class="class-list-wrapper"*ngIf="showClassList">
+      <div class="class-list">
+        <h2>List of Classes</h2>
+        <div *ngIf="classes && classes.length">
+          <ul>
+            <li *ngFor="let c of classes let i=index">
+              <h3>{{i+1}}.{{c.title}}</h3>
+              <p>{{c.description}}</p>
+              <button (click)="confirmDelete(c.id)">Delete</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
